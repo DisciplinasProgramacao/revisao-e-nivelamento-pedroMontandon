@@ -14,8 +14,7 @@ public class ProdutoPerecivel extends Produto {
     @Override
     public double valorDeVenda() {
         double precoFinal = precoCusto * (1+margemLucro);
-        // if(dataDeValidade.datesUntil(LocalDate.now()) <= PRAZO_DESCONTO) {
-        if(dataDeValidade.minusDays(PRAZO_DESCONTO).isBefore(dataDeValidade)) {
+        if(LocalDate.now().minusDays(PRAZO_DESCONTO).isBefore(dataDeValidade)) {
             return precoFinal * (1-DESCONTO);
         }
         return precoFinal;
